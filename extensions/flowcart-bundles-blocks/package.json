@@ -9,11 +9,9 @@
     "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
-    "@shopify/ui-extensions": "^1.0.0",
-    "@shopify/ui-extensions-react": "^1.0.0"
+    "react": "^18.0.0"
   },
   "devDependencies": {
-    "@shopify/extensibly": "^1.0.0",
     "typescript": "^5.0.0"
   },
   "engines": {
