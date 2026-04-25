@@ -1,0 +1,27 @@
+api_version = "2026-07"
+
+[[extensions]]
+name = "FlowCart Bundles Blocks"
+type = "app_block"
+handle = "flowcart-bundles-blocks"
+
+[extensions.ui]
+name = "FlowCart Bundles"
+description = "Display bundle offers on product pages and cart with upsell recommendations"
+
+# Target product page block
+[[extensions.targeting]]
+target = "product-pdp.block.render"
+module_path = "./src/ProductBundleBlock/index.ts"
+
+# Target cart block
+[[extensions.targeting]]
+target = "admin.cart.render"
+module_path = "./src/CartBundleWidget/index.ts"
+
+[extensions.capabilities]
+network_access = true
+
+[extensions.assets]
+find = "./assets"
+include = ["styles.css"]

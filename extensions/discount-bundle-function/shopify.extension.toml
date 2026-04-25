@@ -1,0 +1,15 @@
+[extensions]
+[extensions.discount-bundle-function]
+name = "discount-bundle-function"
+type = "function"
+handle = "discount-bundle-function"
+
+[extensions.discount-bundle-function.build]
+command = "cargo build --release"
+path = "."
+
+[extensions.discount-bundle-function.input_query]
+path = "./input.graphql"
+
+[extensions.discount-bundle-function.target]
+type = "discount"

@@ -1,0 +1,25 @@
+query Input {
+  cart {
+    lines {
+      id
+      quantity
+      merchandise {
+        ... on ProductVariant {
+          id
+          product {
+            id
+          }
+          price {
+            amount
+            currencyCode
+          }
+        }
+      }
+    }
+  }
+  discountNode {
+    metafield(namespace: "flowcart_bundles", key: "bundle_{bundleId}") {
+      value
+    }
+  }
+}

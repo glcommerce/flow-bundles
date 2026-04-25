@@ -1,0 +1,174 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Note that some adapters may set a maximum length for the String type by default, please ensure your strings are long
+// enough when changing adapters.
+// See https://www.prisma.io/docs/orm/reference/prisma-schema-reference#string for more information
+datasource db {
+  provider = "sqlite"
+  url      = "file:dev.sqlite"
+}
+
+model Session {
+  id            String    @id
+  shop          String
+  state         String
+  isOnline      Boolean   @default(false)
+  scope         String?
+  expires       DateTime?
+  accessToken   String
+  userId        BigInt?
+  firstName     String?
+  lastName      String?
+  email         String?
+  accountOwner  Boolean   @default(false)
+  locale        String?
+  collaborator  Boolean?  @default(false)
+  emailVerified Boolean?  @default(false)
+  refreshToken        String?
+  refreshTokenExpires DateTime?
+}
+
+// Bundle types for MVP (Phase 1)
+enum BundleType {
+  FIXED // "3 for $99" type - fixed number of items for a fixed price
+}
+
+enum DiscountType {
+  percentage    // e.g., 15% off
+  fixed_amount  // e.g., $10 off
+}
+
+enum BundleStatus {
+  active
+  paused
+  deleted
+}
+
+model Bundle {
+  id              String        @id @default(cuid())
+  shop            String        // Shopify shop domain
+  name            String        // Bundle display name
+  description     String?       // Optional description
+
+  // Discount configuration
+  bundleType      BundleType    @default(FIXED)
+  discountType   DiscountType
+  discountValue  Float         // e.g., 99.00 for $99, or 15.00 for 15%
+
+  // Product selection
+  minQuantity    Int           @default(3)  // Minimum items required
+  productIds     String        // JSON array of Shopify product IDs
+  productFilter  String?       // JSON object for auto-matching rules (category, tags)
+
+  // Status
+  status         BundleStatus  @default(active)
+
+  // Metadata for Shopify Functions
+  metafieldNamespace String?   @default("flowcart_bundles")
+  metafieldKey      String?    // Will be set after sync
+
+  // Timestamps
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  // Index for efficient querying
+  @@index([shop, status])
+}
+
+// Analytics models for Phase 2
+model BundleStats {
+  id             String   @id @default(cuid())
+  shop           String
+  bundleId       String
+  date           DateTime
+
+  // Usage metrics
+  impressions    Int      @default(0)
+  clicks         Int      @default(0)
+  addToCarts     Int      @default(0)
+
+  // Conversion data
+  purchases      Int      @default(0)
+  revenue        Decimal  @default(0)
+
+  // Order data
+  orderCount     Int      @default(0)
+  totalOrderValue Decimal @default(0)
+
+  // Calculated metrics (pre-computed for dashboard performance)
+  conversionRate Decimal  @default(0)
+  aov           Decimal  @default(0)
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([shop, bundleId, date])
+  @@index([shop, date])
+  @@index([bundleId])
+}
+
+model BundleEvent {
+  id           String   @id @default(cuid())
+  shop         String
+  bundleId     String
+  eventType    String   // impression | click | add_to_cart | purchase
+
+  // Context
+  sessionId    String?
+  customerId   String?
+  orderId      String?
+
+  // Product info
+  productIds   String?  // JSON array
+
+  // Amount data
+  cartValue    Decimal?
+  orderValue   Decimal?
+
+  // Metadata
+  source       String?  // product_page | cart | checkout | storefront
+  deviceType   String?  // desktop | mobile | tablet
+  referrer     String?
+
+  createdAt    DateTime @default(now())
+
+  @@index([shop, bundleId, eventType, createdAt])
+  @@index([shop, createdAt])
+  @@index([bundleId])
+}
+
+model BundleAnalytics {
+  id                   String   @id @default(cuid())
+  shop                 String
+  bundleId             String?
+  periodType           String   // daily | weekly | monthly
+  periodStart          DateTime
+  periodEnd            DateTime
+
+  // Aggregated metrics
+  totalImpressions     Int      @default(0)
+  totalClicks          Int      @default(0)
+  totalAddToCarts      Int      @default(0)
+  totalPurchases       Int      @default(0)
+  totalRevenue         Decimal  @default(0)
+
+  // Calculated metrics
+  avgConversionRate    Decimal  @default(0)
+  avgAov               Decimal  @default(0)
+  clickThroughRate     Decimal  @default(0)
+
+  // Period-over-period changes
+  conversionRateChange Decimal?
+  revenueChange        Decimal?
+
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@unique([shop, bundleId, periodType, periodStart])
+  @@index([shop, periodType, periodStart])
+}

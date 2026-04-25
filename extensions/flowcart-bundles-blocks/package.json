@@ -1,0 +1,22 @@
+{
+  "name": "@flowcart/app-blocks",
+  "version": "1.0.0",
+  "description": "FlowCart Bundles App Blocks for Shopify storefront",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "shopify-extensions build",
+    "dev": "shopify-extensions dev",
+    "lint": "eslint src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "@shopify/ui-extensions": "^1.0.0",
+    "@shopify/ui-extensions-react": "^1.0.0"
+  },
+  "devDependencies": {
+    "@shopify/extensibly": "^1.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}

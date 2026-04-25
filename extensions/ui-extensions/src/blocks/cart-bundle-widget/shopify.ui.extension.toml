@@ -1,0 +1,4 @@
+name = "FlowBundles Cart Widget"
+description = "Cart bundle recommendations and upsell widget for FlowCart Bundles"
+category = "cart"
+handle = "cart-bundle-widget"

@@ -1,0 +1,39 @@
+type DiscountLine {
+  lineId: String
+  quantity: Int
+  discount: Sale
+}
+
+type Sale {
+  message: String
+  amount: MoneyV2
+  conditions: [DiscountCondition!]
+}
+
+type MoneyV2 {
+  amount: Decimal!
+  currencyCode: CurrencyCode!
+}
+
+type DiscountCondition {
+  # Empty for simple discounts
+}
+
+enum CurrencyCode {
+  USD
+  CAD
+  EUR
+  GBP
+  JPY
+  CNY
+  AUD
+  ...AllCurrencies
+}
+
+type DiscountOutput {
+  discounts: [DiscountLine!]!
+}
+
+schema {
+  mutation: DiscountOutput
+}

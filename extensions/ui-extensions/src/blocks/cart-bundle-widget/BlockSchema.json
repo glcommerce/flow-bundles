@@ -1,0 +1,16 @@
+{
+  "name": "FlowBundlesCartWidget",
+  "version": "1.0.0",
+  "description": "Cart bundle recommendations and upsell widget for FlowCart Bundles app",
+  "metafields": [
+    {
+      "namespace": "flowcart_bundles",
+      "key": "cart_widget",
+      "type": "json",
+      "description": "Stores cart widget configuration and bundle recommendations"
+    }
+  ],
+  "readmore": {
+    "docs": "https://shopify.dev/docs/api/checkout-ui-extensions"
+  }
+}

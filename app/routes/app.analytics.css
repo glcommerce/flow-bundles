@@ -1,0 +1,99 @@
+/* Analytics Dashboard Styles */
+
+.analyticsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.periodSelector {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.kpiCard {
+  text-align: center;
+  padding: 1rem;
+}
+
+.kpiValue {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.kpiLabel {
+  color: #666666;
+  font-size: 0.875rem;
+}
+
+.kpiTrend {
+  font-size: 0.875rem;
+}
+
+.kpiTrendPositive {
+  color: #008060;
+}
+
+.kpiTrendNegative {
+  color: #dc3545;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.metricCard {
+  text-align: center;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.metricValue {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.metricLabel {
+  color: #666666;
+  font-size: 0.75rem;
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.metricHighlight {
+  background-color: #e8f5e9;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem;
+}
+
+.progressBarWrapper {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.tableSection {
+  margin-top: 1rem;
+}
+
+.emptyState {
+  padding: 2rem;
+  text-align: center;
+}

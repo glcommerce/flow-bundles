@@ -1,0 +1,16 @@
+{
+  "name": "FlowBundlesProductBundle",
+  "version": "1.0.0",
+  "description": "Product page bundle offers block for FlowCart Bundles app",
+  "metafields": [
+    {
+      "namespace": "flowcart_bundles",
+      "key": "product_bundle",
+      "type": "json",
+      "description": "Stores bundle configuration for product page display"
+    }
+  ],
+  "readmore": {
+    "docs": "https://shopify.dev/docs/api/checkout-ui-extensions"
+  }
+}
