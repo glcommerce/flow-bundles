@@ -30,7 +30,7 @@
 
 你已有：
 - **Client ID:** `a9ef12c6032df330fb6df6a796a7161a`
-- **Client Secret:** `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`
+- **Client Secret:** `<YOUR_SHOPIFY_API_SECRET>`
 
 ### 1.2 配置 GitHub Secrets
 
@@ -46,7 +46,7 @@
 | Secret Name | Value |
 |-------------|-------|
 | `SHOPIFY_API_KEY` | `a9ef12c6032df330fb6df6a796a7161a` |
-| `SHOPIFY_API_SECRET` | `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` |
+| `SHOPIFY_API_SECRET` | `<YOUR_SHOPIFY_API_SECRET>` |
 | `DATABASE_URL` | `postgresql://user:password@localhost:5432/flowcart` |
 
 **注意：** `DATABASE_URL` 需要根据你的实际数据库连接字符串填写。如果是 Shopify Cloudflare Workers 的数据库，请使用对应的连接字符串。
