@@ -15,7 +15,6 @@ import {
   InlineStack,
 } from '@shopify/polaris';
 import { useFetcher } from 'react-router';
-import { X } from '@shopify/polaris-icons';
 
 interface BundleBuilderProps {
   products: Array<{
@@ -321,9 +320,8 @@ export function BundleBuilder({ products, onComplete }: BundleBuilderProps) {
                 </InlineStack>
                 <Button
                   variant="tertiary"
-                  icon={<Icon source={X} />}
                   onClick={() => handleProductToggle(product.id)}
-                />
+                >✕</Button>
               </InlineStack>
             ))}
           </BlockStack>

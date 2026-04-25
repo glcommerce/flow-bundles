@@ -1,7 +1,7 @@
 import type { ActionFunctionArgs } from "react-router";
-import { authenticate } from "../../shopify.server";
-import prisma from "../../db.server";
-import { trackBundlePurchase } from "../../analytics.server";
+import { authenticate } from "../shopify.server";
+import prisma from "../db.server";
+import { trackBundlePurchase } from "../analytics.server";
 
 const METAFIELD_NAMESPACE = "flowcart_bundles";
 
