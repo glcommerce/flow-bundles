@@ -2,7 +2,7 @@
 
 client_id = "a9ef12c6032df330fb6df6a796a7161a"
 name = "Flow Bundles"
-application_url = "https://example.com"
+application_url = "https://flow-bundles.up.railway.app"
 embedded = true
 
 [build]
@@ -25,7 +25,7 @@ api_version = "2026-07"
 scopes = "write_products,write_metaobjects,write_metaobject_definitions"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://flow-bundles.up.railway.app/api/auth" ]
 
 [product.metafields.app.demo_info]
 type = "single_line_text_field"
