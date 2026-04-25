@@ -9,8 +9,7 @@ ENV NODE_ENV=production
 
 COPY package.json package-lock.json* ./
 
-# Install dependencies without workspace linking to avoid issues
-RUN npm ci --omit=dev --no-workspaces && npm cache clean --force
+RUN npm ci --omit=dev && npm cache clean --force
 
 COPY . .
 
