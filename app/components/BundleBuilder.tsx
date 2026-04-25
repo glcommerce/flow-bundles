@@ -384,10 +384,9 @@ function WizardProgress({ currentStep, steps }: { currentStep: number; steps: ty
                   alignItems: 'center',
                   justifyContent: 'center',
                   fontWeight: 600,
-                  fontSize: '0.875rem',
+                  fontSize: '0.75rem',
                   backgroundColor: isCompleted ? '#008060' : isCurrent ? '#006EFF' : '#E3E3E3',
                   color: isCompleted || isCurrent ? '#FFFFFF' : '#666666',
-                  fontSize: '0.75rem',
                 }}
               >
                 {isCompleted ? '✓' : index + 1}
