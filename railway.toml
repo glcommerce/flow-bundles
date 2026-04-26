@@ -1,0 +1,10 @@
+[build]
+builder = "NIXPACKS"
+
+[build.commands]
+build = "npm run build"
+
+[deploy]
+startCommand = "npm run docker-start"
+healthcheckPath = "/"
+healthcheckInterval = 30
