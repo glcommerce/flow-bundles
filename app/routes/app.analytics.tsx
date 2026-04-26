@@ -1,5 +1,6 @@
 import type { LoaderFunctionArgs } from "react-router";
-import { json, useLoaderData, useSearchParams } from "react-router";
+import { useLoaderData, useSearchParams } from "react-router";
+import { json } from "../utils";
 import { authenticate } from "../shopify.server";
 import {
   getMerchantKPIs,

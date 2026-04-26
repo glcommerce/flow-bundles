@@ -1,5 +1,5 @@
 import type { LoaderFunctionArgs } from "react-router";
-import { json } from "react-router";
+import { json } from "../utils";
 import { authenticate } from "../shopify.server";
 import { getBundleById } from "../bundle.server";
 

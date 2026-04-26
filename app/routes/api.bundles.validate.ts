@@ -1,5 +1,5 @@
 import type { ActionFunctionArgs } from "react-router";
-import { json } from "react-router";
+import { json } from "../utils";
 import { authenticate } from "../shopify.server";
 import { validateBundleForCart, getProductPricesFromShopify } from "../bundle.server";
 
