@@ -18,7 +18,7 @@ import {
   Select,
   EmptyState,
 } from "@shopify/polaris";
-import styles from "../app.analytics.css?url";
+import styles from "../app.analytics.styles.css?url";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const { session } = await authenticate.admin(request);
